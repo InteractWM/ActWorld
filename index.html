@@ -88,13 +88,13 @@
       background:linear-gradient(90deg,var(--accent),#7c4dff);
       -webkit-background-clip:text; background-clip:text; -webkit-text-fill-color:transparent;
     }
-    .authors{ text-align:center; font-size:18px; line-height:1.9; max-width:920px; margin:0 auto 6px; }
+    .authors{ text-align:center; font-size:19px; line-height:1.85; max-width:1120px; margin:0 auto 8px; }
     .authors a{color:var(--fg); font-weight:600}
     .authors a:hover{color:var(--accent)}
     .authors sup{color:var(--accent); font-weight:700}
-    .affil{ text-align:center; color:var(--muted); font-size:15px; margin:10px auto 4px; }
+    .affil{ text-align:center; color:var(--muted); font-size:17.5px; margin:12px auto 4px; }
     .affil .org{font-weight:600; color:var(--fg)}
-    .note{ text-align:center; color:var(--muted); font-size:13.5px; margin-bottom:26px}
+    .note{ text-align:center; color:var(--muted); font-size:15px; margin-bottom:26px}
 
     .links{ display:flex; flex-wrap:wrap; gap:12px; justify-content:center; margin-top:8px}
     .btn{
@@ -284,7 +284,7 @@
 
       <div class="authors">
         <a href="https://steven-xiong.github.io/" target="_blank">Zhexiao Xiong</a><sup>1,2,*</sup>,
-        <a href="https://song630.github.io/yizhisong.github.io" target="_blank">Yizhi Song</a><sup>2</sup>,
+        <a href="https://song630.github.io/yizhisong.github.io" target="_blank">Yizhi Song</a><sup>2,&dagger;</sup>,
         <a href="https://scholar.google.com/citations?user=VeTCSyEAAAAJ&hl=en" target="_blank">Hao Kang</a><sup>2</sup>,
         <a href="https://scholar.google.com/citations?user=0TIYjPAAAAAJ&hl=en" target="_blank">Qing Yan</a><sup>2</sup>,
         <a href="https://liming-jiang.com/" target="_blank">Liming Jiang</a><sup>2</sup>,
@@ -302,7 +302,7 @@
         <span class="org"><sup>1</sup>Washington University in St. Louis</span> &nbsp;&nbsp;
         <span class="org"><sup>2</sup>Intelligent Creation, ByteDance</span>
       </div>
-      <div class="note"><sup>*</sup>Work done during internship at ByteDance</div>
+      <div class="note"><sup>*</sup>Work done during internship at ByteDance &nbsp;&nbsp; <sup>&dagger;</sup>Project Lead</div>
 
       <div class="links">
         <a class="btn primary" href="static/pdfs/actworld.pdf" target="_blank"><span class="ico"><i class="fas fa-file-pdf"></i></span> Paper</a>
@@ -349,18 +349,6 @@
         tokens across long rollouts. Experiments show ActWorld supports both flexible navigation and rich object interaction within a
         single model, substantially improving interaction fidelity over navigation-only baselines without sacrificing viewpoint control.
       </p>
-    </div>
-  </section>
-
-  <!-- ===================== STATS ===================== -->
-  <section>
-    <div class="wrap">
-      <div class="stats">
-        <div class="stat"><div class="num">57.8%</div><div class="lab">Action success rate (VLM-AJ) — more than 2× every baseline</div></div>
-        <div class="stat"><div class="num">100K</div><div class="lab">Interaction-dense training videos · 40 action categories</div></div>
-        <div class="stat"><div class="num">3-step</div><div class="lab">Distilled generator for real-time interactive rollout</div></div>
-        <div class="stat"><div class="num">I-Bench</div><div class="lab">Long-horizon action + navigation benchmark · 300 prompts</div></div>
-      </div>
     </div>
   </section>
 
