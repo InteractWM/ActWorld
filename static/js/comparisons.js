@@ -1,0 +1,210 @@
+// Auto-generated comparison metadata for the interactive viewer.
+// Videos live at static/videos/comparisons/<vid>/<model>.mp4
+window.COMPARISONS = {
+  "pretty": {
+    "ibench_astra": "Astra",
+    "ibench_hyworldplay": "HY-World 1.5",
+    "ibench_lingbot": "Lingbot-World",
+    "ibench_matrix_game3": "Matrix-Game 3",
+    "ibench_yume": "Yume 1.5",
+    "ours": "ActWorld (Ours)"
+  },
+  "rows": [
+    {
+      "vid": "fp_game_insert_press_pickup_0001",
+      "tag": "First-person · Game",
+      "verbs": "Insert → Press → Pickup",
+      "caption": "In an egocentric first-person view, a neon city sidewalk has a vending machine, a curbside motorcycle, and open pavement under glowing signs. The player inserts a coin into the vending machine, the camera moves diagonally forward-right toward the button panel, the player presses the drink button, the camera moves backward-left toward the motorcycle, the player picks up a helmet from the seat, and the camera turns right to face the street lane.",
+      "models": [
+        "ours",
+        "ibench_astra",
+        "ibench_hyworldplay",
+        "ibench_lingbot",
+        "ibench_matrix_game3",
+        "ibench_yume"
+      ]
+    },
+    {
+      "vid": "fp_game_open_pickup_place_0001",
+      "tag": "First-person · Game",
+      "verbs": "Open → Pickup → Place",
+      "caption": "In an egocentric first-person view, a jungle temple path has a stone altar, a wooden chest, and open steps covered with leaves. The player opens the wooden chest, the camera moves diagonally forward-right toward the stone altar, the player picks up a carved idol from the altar, the camera moves backward-left toward the chest, the player places the idol into the chest, and the camera tilts down-right to show the chest interior.",
+      "models": [
+        "ours",
+        "ibench_astra",
+        "ibench_hyworldplay",
+        "ibench_lingbot",
+        "ibench_matrix_game3",
+        "ibench_yume"
+      ]
+    },
+    {
+      "vid": "fp_real_pick_place_pickup_0001",
+      "tag": "First-person · Real",
+      "verbs": "Pick → Place → Pickup",
+      "caption": "In an egocentric first-person view, a hillside fruit trail has low berry bushes, a cloth basket, and an open path along the slope. The person picks a ripe berry from the bush, the camera moves diagonally forward-left along the trail toward the basket, the person places the berry into the basket, the camera moves backward-right toward another bush, the person picks up the basket handle, and the camera tilts down-right to show the basket staying upright.",
+      "models": [
+        "ours",
+        "ibench_astra",
+        "ibench_hyworldplay",
+        "ibench_lingbot",
+        "ibench_matrix_game3",
+        "ibench_yume"
+      ]
+    },
+    {
+      "vid": "fp_real_pick_place_pick_0001",
+      "tag": "First-person · Real",
+      "verbs": "Pick → Place → Pick",
+      "caption": "In an egocentric first-person view, an orchard path has low fruit trees, a basket on the grass, and clear walking space between the rows. The person picks an apple from a low branch, the camera moves diagonally forward-left along the row toward the basket, the person places the apple inside the basket, the camera moves diagonally backward-right toward another tree, the person picks a second apple from a nearby branch, and the camera turns up-left to show the fruit tree canopy.",
+      "models": [
+        "ours",
+        "ibench_astra",
+        "ibench_hyworldplay",
+        "ibench_lingbot",
+        "ibench_matrix_game3",
+        "ibench_yume"
+      ]
+    },
+    {
+      "vid": "fp_real_place_pour_close_0001",
+      "tag": "First-person · Real",
+      "verbs": "Place → Pour → Close",
+      "caption": "In an egocentric first-person view, a campsite clearing has a picnic table, a cooler, and open ground around a safe fire ring. The person places a metal cup on the picnic table, the camera moves diagonally forward-right toward the cooler, the person pours water from a bottle into the cup, the camera moves backward-left toward the cooler lid, the person closes the cooler, and the camera turns right to show the campsite layout.",
+      "models": [
+        "ours",
+        "ibench_astra",
+        "ibench_hyworldplay",
+        "ibench_lingbot",
+        "ibench_matrix_game3",
+        "ibench_yume"
+      ]
+    },
+    {
+      "vid": "fp_real_pour_stir_place_0001",
+      "tag": "First-person · Real",
+      "verbs": "Pour → Stir → Place",
+      "caption": "In an egocentric first-person view, a dining room has a wide table, a water pitcher, and a bowl placed within easy reach. The person pours water from the pitcher into a cup, the camera moves forward-left along the table edge, the person stirs soup in the bowl with a spoon, the camera moves backward-right toward the tray, the person places the spoon beside the bowl, and the camera tilts down-left to show the cup and bowl together.",
+      "models": [
+        "ours",
+        "ibench_astra",
+        "ibench_hyworldplay",
+        "ibench_lingbot",
+        "ibench_matrix_game3",
+        "ibench_yume"
+      ]
+    },
+    {
+      "vid": "fp_real_strum_place_pickup_0001",
+      "tag": "First-person · Real",
+      "verbs": "Strum → Place → Pickup",
+      "caption": "In an egocentric first-person view, a music room has a guitar stand, a chair, and a music stand across the open floor. The person strums an acoustic guitar once near the chair, the camera moves diagonally forward-left toward the guitar stand, the person places the guitar back on the stand, the camera moves backward-right toward the music stand, the person picks up a sheet of music, and the camera tilts down-right to keep the sheet visible.",
+      "models": [
+        "ours",
+        "ibench_astra",
+        "ibench_hyworldplay",
+        "ibench_lingbot",
+        "ibench_matrix_game3",
+        "ibench_yume"
+      ]
+    },
+    {
+      "vid": "fp_real_water_place_pickup_0001",
+      "tag": "First-person · Real",
+      "verbs": "Water → Place → Pickup",
+      "caption": "In an egocentric first-person view, a backyard garden has a hose, flower pots, and open paving between the plants. The person waters a flower pot with the hose, the camera moves diagonally forward-left along the garden path, the person places the hose beside the pot, the camera moves backward-right toward the patio, the person picks up a hand trowel from the ground, and the camera tilts down-right to show the tool clearly.",
+      "models": [
+        "ours",
+        "ibench_astra",
+        "ibench_hyworldplay",
+        "ibench_lingbot",
+        "ibench_matrix_game3",
+        "ibench_yume"
+      ]
+    },
+    {
+      "vid": "tp_game_open_pickup_close_0001",
+      "tag": "Third-person · Game",
+      "verbs": "Open → Pickup → Close",
+      "caption": "In a third-person tracking view, the camera follows behind the player and keeps the player centered in front. A jungle adventure camp has a storage chest, a map table, and open ground between tents. The player opens the storage chest, the camera follows diagonally forward-right toward the map table, the player picks up a compass from the table, the camera follows backward-left toward the chest, the player closes the chest lid, and the camera turns up-left to show the camp path.",
+      "models": [
+        "ours",
+        "ibench_astra",
+        "ibench_hyworldplay",
+        "ibench_lingbot",
+        "ibench_matrix_game3",
+        "ibench_yume"
+      ]
+    },
+    {
+      "vid": "tp_game_open_pickup_place_0001",
+      "tag": "Third-person · Game",
+      "verbs": "Open → Pickup → Place",
+      "caption": "In a third-person tracking view, the camera follows behind the player and keeps the player centered in front. A frontier camp has a wagon, a supply box, and open ground near a lantern. The player opens the supply box, the camera follows diagonally forward-right toward the lantern, the player picks up the lantern from the ground, the camera follows backward-left toward the wagon, the player places the lantern on the wagon step, and the camera turns down-left to show the supplies.",
+      "models": [
+        "ours",
+        "ibench_astra",
+        "ibench_hyworldplay",
+        "ibench_lingbot",
+        "ibench_matrix_game3",
+        "ibench_yume"
+      ]
+    },
+    {
+      "vid": "tp_real_carry_place_wipe_0002",
+      "tag": "Third-person · Real",
+      "verbs": "Carry → Place → Wipe",
+      "caption": "In a third-person tracking view, the camera follows behind the person and keeps the person centered in front. An outdoor café patio has a service table, a clear aisle, and several simple tables. The person carries a tray from the service table, the camera follows diagonally forward-left along the aisle, the person places the tray on an empty table, the camera follows backward-right toward the service table, the person wipes the table edge with a cloth, and the camera tilts down-left to show the clean surface.",
+      "models": [
+        "ours",
+        "ibench_astra",
+        "ibench_hyworldplay",
+        "ibench_lingbot",
+        "ibench_matrix_game3",
+        "ibench_yume"
+      ]
+    },
+    {
+      "vid": "tp_real_water_place_pickup_0001",
+      "tag": "Third-person · Real",
+      "verbs": "Water → Place → Pickup",
+      "caption": "In a third-person tracking view, the camera follows behind the person and keeps the person centered in front. A backyard garden has flower pots, a hose, and an open path. The person waters a flower pot with the hose, the camera follows diagonally forward-right along the garden path, the person places the hose beside the pot, the camera follows backward-left toward the patio, the person picks up a hand trowel, and the camera turns down-left to show the tool.",
+      "models": [
+        "ours",
+        "ibench_astra",
+        "ibench_hyworldplay",
+        "ibench_lingbot",
+        "ibench_matrix_game3",
+        "ibench_yume"
+      ]
+    },
+    {
+      "vid": "benchmark_first_person_pour-stir-place_0001",
+      "tag": "First-person",
+      "verbs": "Pour → Stir → Place",
+      "caption": "In an egocentric first-person view, a garden path with planters, watering can, cloth, small basket, toy, and low plants nearby. The interaction target is a cup located within reachable distance. the subject pours from a cup because liquid needs to move, tilts the container, creates a visible stream, and makes the receiving area fill while the source lowers. The camera moves forward with the subject as the next object comes closer. the subject stirs a cup because the contents need mixing, moves in circular motion through the container, and creates visible swirling that blends the contents. The camera pans left to keep the hand motion and object centered. the subject places a cup because it needs a precise final location, lowers it toward the target spot, aligns it with the nearby surface, and leaves it arranged there. The camera pans right to keep the hand motion and object centered. The clip ends after the pour-stir-place sequence with the target visibly changed from its starting state and the subject near the final object location.",
+      "models": [
+        "ours",
+        "ibench_astra",
+        "ibench_hyworldplay",
+        "ibench_lingbot",
+        "ibench_matrix_game3",
+        "ibench_yume"
+      ]
+    },
+    {
+      "vid": "benchmark_third_person_pickup-lift-drop_0007",
+      "tag": "Third-person",
+      "verbs": "Pickup → Lift → Drop",
+      "caption": "In a third-person tracking view, the camera follows directly behind a shopper, keeping the subject centered in front of the camera. A beach with sand, towel, small bucket, ball, bottle, and open shoreline nearby. The interaction target is a backpack ahead of the subject. a shopper picks up a backpack because it needs to be moved, reaches toward it, closes around it, and lifts it away from its starting spot, causing the object to leave the surface. The camera follows behind the subject and pans right, keeping the subject centered in front of the camera. a shopper lifts a backpack because it needs vertical clearance, moves upward with the object, and makes it visibly rise above its original height. The camera follows behind the subject and tilts up, keeping the subject centered in front of the camera. a shopper drops a backpack because it no longer needs to be carried, opens contact, and gravity makes the object fall and settle below. The camera follows behind the subject and moves right, keeping the subject centered in front of the camera. The clip ends after the pickup-lift-drop sequence with the target visibly changed from its starting state and the subject near the final object location.",
+      "models": [
+        "ours",
+        "ibench_astra",
+        "ibench_hyworldplay",
+        "ibench_lingbot",
+        "ibench_matrix_game3",
+        "ibench_yume"
+      ]
+    }
+  ]
+};

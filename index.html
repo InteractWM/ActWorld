@@ -3,518 +3,721 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  
-  <!-- Primary Meta Tags -->
-  <!-- TODO: Replace with your paper title and author names -->
-  <meta name="title" content="PAPER_TITLE - AUTHOR_NAMES">
-  <!-- TODO: Write a compelling 150-160 character description of your research -->
-  <meta name="description" content="BRIEF_DESCRIPTION_OF_YOUR_RESEARCH_CONTRIBUTION_AND_FINDINGS">
-  <!-- TODO: Add 5-10 relevant keywords for your research area -->
-  <meta name="keywords" content="KEYWORD1, KEYWORD2, KEYWORD3, machine learning, computer vision, AI">
-  <!-- TODO: List all authors -->
-  <meta name="author" content="FIRST_AUTHOR_NAME, SECOND_AUTHOR_NAME">
-  <meta name="robots" content="index, follow">
-  <meta name="language" content="English">
-  
-  <!-- Open Graph / Facebook -->
+
+  <title>ActWorld: From Explorable to Interactive World Model via Action-Aware Memory</title>
+  <meta name="title" content="ActWorld: From Explorable to Interactive World Model via Action-Aware Memory">
+  <meta name="description" content="ActWorld is a real-time interactive world model that unifies flexible navigation and rich mid-rollout object interaction in a single chunk-autoregressive framework, powered by a hierarchical action-aware memory and a 100K interaction-dense video dataset.">
+  <meta name="keywords" content="interactive world model, video generation, action-aware memory, object interaction, world simulation, diffusion transformer, autoregressive video, ActWorld, ByteDance, WashU">
+  <meta name="author" content="Zhexiao Xiong, Yizhi Song, Hao Kang, Qing Yan, Liming Jiang, Nathan Jacobs">
+
+  <!-- Open Graph -->
   <meta property="og:type" content="article">
-  <!-- TODO: Replace with your institution or lab name -->
-  <meta property="og:site_name" content="INSTITUTION_OR_LAB_NAME">
-  <!-- TODO: Same as paper title above -->
-  <meta property="og:title" content="PAPER_TITLE">
-  <!-- TODO: Same as description above -->
-  <meta property="og:description" content="BRIEF_DESCRIPTION_OF_YOUR_RESEARCH_CONTRIBUTION_AND_FINDINGS">
-  <!-- TODO: Replace with your actual website URL -->
-  <meta property="og:url" content="https://YOUR_DOMAIN.com/YOUR_PROJECT_PAGE">
-  <!-- TODO: Create a 1200x630px preview image and update path -->
-  <meta property="og:image" content="https://YOUR_DOMAIN.com/static/images/social_preview.png">
-  <meta property="og:image:width" content="1200">
-  <meta property="og:image:height" content="630">
-  <meta property="og:image:alt" content="PAPER_TITLE - Research Preview">
-  <meta property="article:published_time" content="2024-01-01T00:00:00.000Z">
-  <meta property="article:author" content="FIRST_AUTHOR_NAME">
-  <meta property="article:section" content="Research">
-  <meta property="article:tag" content="KEYWORD1">
-  <meta property="article:tag" content="KEYWORD2">
-
-  <!-- Twitter -->
+  <meta property="og:title" content="ActWorld: From Explorable to Interactive World Model via Action-Aware Memory">
+  <meta property="og:description" content="A real-time interactive world model that unifies flexible navigation and rich object interaction via hierarchical action-aware memory.">
+  <meta property="og:image" content="static/images/teaser1.png">
   <meta name="twitter:card" content="summary_large_image">
-  <!-- TODO: Replace with your lab/institution Twitter handle -->
-  <meta name="twitter:site" content="@YOUR_TWITTER_HANDLE">
-  <!-- TODO: Replace with first author's Twitter handle -->
-  <meta name="twitter:creator" content="@AUTHOR_TWITTER_HANDLE">
-  <!-- TODO: Same as paper title above -->
-  <meta name="twitter:title" content="PAPER_TITLE">
-  <!-- TODO: Same as description above -->
-  <meta name="twitter:description" content="BRIEF_DESCRIPTION_OF_YOUR_RESEARCH_CONTRIBUTION_AND_FINDINGS">
-  <!-- TODO: Same as social preview image above -->
-  <meta name="twitter:image" content="https://YOUR_DOMAIN.com/static/images/social_preview.png">
-  <meta name="twitter:image:alt" content="PAPER_TITLE - Research Preview">
+  <meta name="twitter:title" content="ActWorld: From Explorable to Interactive World Model">
+  <meta name="twitter:description" content="Unifying navigation and rich object interaction in a single real-time world model.">
+  <meta name="twitter:image" content="static/images/teaser1.png">
 
-  <!-- Academic/Research Specific -->
-  <meta name="citation_title" content="PAPER_TITLE">
-  <meta name="citation_author" content="FIRST_AUTHOR_LAST, FIRST_AUTHOR_FIRST">
-  <meta name="citation_author" content="SECOND_AUTHOR_LAST, SECOND_AUTHOR_FIRST">
-  <meta name="citation_publication_date" content="2024">
-  <meta name="citation_conference_title" content="CONFERENCE_NAME">
-  <meta name="citation_pdf_url" content="https://YOUR_DOMAIN.com/static/pdfs/paper.pdf">
-  
-  <!-- Additional SEO -->
-  <meta name="theme-color" content="#2563eb">
-  <meta name="msapplication-TileColor" content="#2563eb">
-  <meta name="apple-mobile-web-app-capable" content="yes">
-  <meta name="apple-mobile-web-app-status-bar-style" content="default">
-  
-  <!-- Preconnect for performance -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link rel="preconnect" href="https://ajax.googleapis.com">
-  <link rel="preconnect" href="https://documentcloud.adobe.com">
-  <link rel="preconnect" href="https://cdn.jsdelivr.net">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Newsreader:ital,opsz@0,6..72;1,6..72&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.5.1/css/all.min.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css">
 
+  <style>
+    :root{
+      --bg:#ffffff;
+      --bg-soft:#f6f7fb;
+      --bg-soft2:#eef1f8;
+      --fg:#16181d;
+      --muted:#5b6573;
+      --line:#e4e8f0;
+      --accent:#2c6cf0;
+      --accent-dark:#1d4ed8;
+      --ours:#0a8a4f;
+      --ours-soft:#e7f6ee;
+      --radius:16px;
+      --shadow:0 1px 2px rgba(16,24,40,.04), 0 8px 24px rgba(16,24,40,.06);
+      --shadow-lg:0 12px 40px rgba(16,24,40,.12);
+      --maxw:1180px;
+    }
+    *{box-sizing:border-box}
+    html{scroll-behavior:smooth}
+    body{
+      margin:0; background:var(--bg); color:var(--fg);
+      font-family:"Inter",system-ui,-apple-system,"Helvetica Neue",sans-serif;
+      line-height:1.6; -webkit-font-smoothing:antialiased; font-size:16px;
+    }
+    a{color:var(--accent); text-decoration:none}
+    a:hover{color:var(--accent-dark)}
+    .wrap{max-width:var(--maxw); margin:0 auto; padding:0 22px}
+    .narrow{max-width:880px; margin:0 auto}
+    section{padding:54px 0}
+    h2.section-title{
+      font-size:30px; font-weight:800; letter-spacing:-.02em; text-align:center;
+      margin:0 0 6px; color:var(--fg);
+    }
+    .section-sub{ text-align:center; color:var(--muted); margin:0 auto 34px; max-width:680px; }
+    .eyebrow{
+      text-transform:uppercase; letter-spacing:.14em; font-size:12px; font-weight:700;
+      color:var(--accent); text-align:center; margin-bottom:10px;
+    }
 
-  <!-- TODO: Replace with your paper title and authors -->
-  <title>PAPER_TITLE - AUTHOR_NAMES | Academic Research</title>
-  
-  <!-- Favicon and App Icons -->
-  <link rel="icon" type="image/x-icon" href="static/images/favicon.ico">
-  <link rel="apple-touch-icon" href="static/images/favicon.ico">
-  
-  <!-- Critical CSS - Load synchronously -->
-  <link rel="stylesheet" href="static/css/bulma.min.css">
-  <link rel="stylesheet" href="static/css/index.css">
-  
-  <!-- Non-critical CSS - Load asynchronously -->
-  <link rel="preload" href="static/css/bulma-carousel.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
-  <link rel="preload" href="static/css/bulma-slider.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
-  <link rel="preload" href="static/css/fontawesome.all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
-  <link rel="preload" href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
-  
-  <!-- Fallback for browsers that don't support preload -->
-  <noscript>
-    <link rel="stylesheet" href="static/css/bulma-carousel.min.css">
-    <link rel="stylesheet" href="static/css/bulma-slider.min.css">
-    <link rel="stylesheet" href="static/css/fontawesome.all.min.css">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css">
-  </noscript>
-  
-  <!-- Fonts - Optimized loading -->
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-  
-  <!-- Defer non-critical JavaScript -->
-  <script defer src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-  <script defer src="https://documentcloud.adobe.com/view-sdk/main.js"></script>
-  <script defer src="static/js/fontawesome.all.min.js"></script>
-  <script defer src="static/js/bulma-carousel.min.js"></script>
-  <script defer src="static/js/bulma-slider.min.js"></script>
-  <script defer src="static/js/index.js"></script>
-  
-  <!-- Structured Data for Academic Papers -->
-  <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@type": "ScholarlyArticle",
-    "headline": "PAPER_TITLE",
-    "description": "BRIEF_DESCRIPTION_OF_YOUR_RESEARCH_CONTRIBUTION_AND_FINDINGS",
-    "author": [
-      {
-        "@type": "Person",
-        "name": "FIRST_AUTHOR_NAME",
-        "affiliation": {
-          "@type": "Organization",
-          "name": "INSTITUTION_NAME"
-        }
-      },
-      {
-        "@type": "Person",
-        "name": "SECOND_AUTHOR_NAME",
-        "affiliation": {
-          "@type": "Organization",
-          "name": "INSTITUTION_NAME"
-        }
-      }
-    ],
-    "datePublished": "2024-01-01",
-    "publisher": {
-      "@type": "Organization",
-      "name": "CONFERENCE_OR_JOURNAL_NAME"
-    },
-    "url": "https://YOUR_DOMAIN.com/YOUR_PROJECT_PAGE",
-    "image": "https://YOUR_DOMAIN.com/static/images/social_preview.png",
-    "keywords": ["KEYWORD1", "KEYWORD2", "KEYWORD3", "machine learning", "computer vision"],
-    "abstract": "FULL_ABSTRACT_TEXT_HERE",
-    "citation": "BIBTEX_CITATION_HERE",
-    "isAccessibleForFree": true,
-    "license": "https://creativecommons.org/licenses/by/4.0/",
-    "mainEntity": {
-      "@type": "WebPage",
-      "@id": "https://YOUR_DOMAIN.com/YOUR_PROJECT_PAGE"
-    },
-    "about": [
-      {
-        "@type": "Thing",
-        "name": "RESEARCH_AREA_1"
-      },
-      {
-        "@type": "Thing", 
-        "name": "RESEARCH_AREA_2"
-      }
-    ]
-  }
-  </script>
-  
-  <!-- Website/Organization Structured Data -->
-  <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@type": "Organization",
-    "name": "INSTITUTION_OR_LAB_NAME",
-    "url": "https://YOUR_INSTITUTION_WEBSITE.com",
-    "logo": "https://YOUR_DOMAIN.com/static/images/favicon.ico",
-    "sameAs": [
-      "https://twitter.com/YOUR_TWITTER_HANDLE",
-      "https://github.com/YOUR_GITHUB_USERNAME"
-    ]
-  }
-  </script>
+    /* ---------- Hero ---------- */
+    .hero{
+      background:
+        radial-gradient(1100px 480px at 50% -8%, #eaf0ff 0%, rgba(234,240,255,0) 60%),
+        linear-gradient(180deg,#fbfcff 0%, #ffffff 100%);
+      border-bottom:1px solid var(--line);
+      padding:64px 0 40px;
+    }
+    .badge-venue{
+      display:inline-flex; align-items:center; gap:8px;
+      background:#fff; border:1px solid var(--line); color:var(--muted);
+      padding:6px 14px; border-radius:999px; font-size:13px; font-weight:600;
+      box-shadow:var(--shadow); margin-bottom:20px;
+    }
+    .badge-venue b{color:var(--fg)}
+    h1.title{
+      font-size:clamp(28px,4.6vw,46px); line-height:1.12; font-weight:800;
+      letter-spacing:-.025em; margin:0 auto 20px; max-width:920px; text-align:center;
+    }
+    h1.title .accent{
+      background:linear-gradient(90deg,var(--accent),#7c4dff);
+      -webkit-background-clip:text; background-clip:text; -webkit-text-fill-color:transparent;
+    }
+    .authors{ text-align:center; font-size:18px; line-height:1.9; max-width:920px; margin:0 auto 6px; }
+    .authors a{color:var(--fg); font-weight:600}
+    .authors a:hover{color:var(--accent)}
+    .authors sup{color:var(--accent); font-weight:700}
+    .affil{ text-align:center; color:var(--muted); font-size:15px; margin:10px auto 4px; }
+    .affil .org{font-weight:600; color:var(--fg)}
+    .note{ text-align:center; color:var(--muted); font-size:13.5px; margin-bottom:26px}
+
+    .links{ display:flex; flex-wrap:wrap; gap:12px; justify-content:center; margin-top:8px}
+    .btn{
+      display:inline-flex; align-items:center; gap:9px;
+      background:#16181d; color:#fff; border:1px solid #16181d;
+      padding:11px 20px; border-radius:999px; font-weight:600; font-size:15px;
+      transition:transform .12s ease, box-shadow .12s ease, background .12s ease;
+    }
+    .btn:hover{transform:translateY(-2px); box-shadow:var(--shadow-lg); color:#fff}
+    .btn.alt{background:#fff; color:var(--fg); border-color:var(--line)}
+    .btn.alt:hover{color:var(--accent); border-color:var(--accent)}
+    .btn.primary{background:var(--accent); border-color:var(--accent)}
+    .btn.primary:hover{background:var(--accent-dark)}
+    .btn .ico{font-size:17px}
+
+    /* ---------- Teaser ---------- */
+    figure{margin:0}
+    .media{
+      border:1px solid var(--line); border-radius:var(--radius); overflow:hidden;
+      background:#fff; box-shadow:var(--shadow);
+    }
+    .media img{display:block; width:100%; height:auto}
+    figcaption{ color:var(--muted); font-size:14.5px; margin-top:14px; text-align:center; }
+    figcaption b{color:var(--fg)}
+
+    /* ---------- Abstract ---------- */
+    .alt-bg{background:var(--bg-soft); border-top:1px solid var(--line); border-bottom:1px solid var(--line)}
+    .abstract p{font-size:17.5px; color:#2b313b; text-align:justify}
+    .abstract p .hl{ background:linear-gradient(180deg,transparent 62%, #d9e6ff 62%); font-weight:600; padding:0 2px;}
+
+    /* ---------- Stats ---------- */
+    .stats{ display:grid; grid-template-columns:repeat(4,1fr); gap:16px; margin-top:6px;}
+    .stat{
+      background:#fff; border:1px solid var(--line); border-radius:14px; padding:22px 18px;
+      text-align:center; box-shadow:var(--shadow);
+    }
+    .stat .num{ font-size:30px; font-weight:800; letter-spacing:-.02em; color:var(--accent);}
+    .stat .lab{ font-size:13.5px; color:var(--muted); margin-top:4px; font-weight:500}
+
+    /* ---------- Contribution cards ---------- */
+    .cards{display:grid; grid-template-columns:repeat(3,1fr); gap:18px}
+    .card{
+      background:#fff; border:1px solid var(--line); border-radius:var(--radius); padding:24px 22px;
+      box-shadow:var(--shadow); transition:transform .14s ease, box-shadow .14s ease;
+    }
+    .card:hover{transform:translateY(-3px); box-shadow:var(--shadow-lg)}
+    .card .ic{
+      width:46px; height:46px; border-radius:12px; display:grid; place-items:center;
+      background:var(--bg-soft2); color:var(--accent); font-size:20px; margin-bottom:14px;
+    }
+    .card h3{margin:0 0 8px; font-size:18px; font-weight:700}
+    .card p{margin:0; color:var(--muted); font-size:15px}
+
+    /* ---------- Method ---------- */
+    .method-points{display:grid; grid-template-columns:repeat(2,1fr); gap:14px 28px; margin-top:30px}
+    .mp{display:flex; gap:13px; align-items:flex-start}
+    .mp .dot{flex:none; width:26px; height:26px; border-radius:8px; background:var(--ours-soft); color:var(--ours);
+             display:grid; place-items:center; font-size:13px; font-weight:800; margin-top:2px}
+    .mp h4{margin:0 0 2px; font-size:16px; font-weight:700}
+    .mp p{margin:0; color:var(--muted); font-size:14.5px}
+
+    /* ---------- Comparison viewer ---------- */
+    .cmp-controls{
+      position:sticky; top:0; z-index:20; background:rgba(255,255,255,.86); backdrop-filter:blur(10px);
+      border:1px solid var(--line); border-radius:14px; padding:12px 16px; margin-bottom:22px;
+      display:flex; align-items:center; gap:10px; flex-wrap:wrap; box-shadow:var(--shadow);
+    }
+    .cmp-controls .grp{display:flex; gap:8px; flex-wrap:wrap}
+    .pill{
+      border:1px solid var(--line); background:#fff; color:var(--fg); border-radius:999px;
+      padding:8px 15px; font-size:13.5px; font-weight:600; cursor:pointer; transition:all .12s ease;
+      display:inline-flex; align-items:center; gap:7px;
+    }
+    .pill:hover{border-color:var(--accent); color:var(--accent)}
+    .pill.solid{background:var(--accent); color:#fff; border-color:var(--accent)}
+    .pill.solid:hover{background:var(--accent-dark); color:#fff}
+    .pill.active{background:var(--fg); color:#fff; border-color:var(--fg)}
+    .cmp-controls .spacer{flex:1}
+    .cmp-controls .hint{color:var(--muted); font-size:13px}
+
+    .cmp-row{
+      background:#fff; border:1px solid var(--line); border-radius:var(--radius); padding:18px 18px 20px;
+      margin-bottom:20px; box-shadow:var(--shadow);
+    }
+    .cmp-head{display:flex; align-items:flex-start; gap:14px; margin-bottom:14px}
+    .cmp-head .idx{
+      flex:none; font-weight:800; font-size:13px; color:var(--muted);
+      background:var(--bg-soft2); border-radius:8px; padding:6px 10px; min-width:52px; text-align:center;
+    }
+    .cmp-head .meta{flex:1; min-width:0}
+    .cmp-head .chip{
+      display:inline-block; font-size:11.5px; font-weight:700; text-transform:uppercase; letter-spacing:.06em;
+      color:var(--accent); background:#eaf0ff; padding:3px 9px; border-radius:999px; margin-bottom:6px;
+    }
+    .cmp-head h3{margin:0 0 4px; font-size:18px; font-weight:700; letter-spacing:-.01em}
+    .cmp-head .cap{margin:0; color:var(--muted); font-size:13.5px; line-height:1.5}
+    .cmp-head .cap.clamp{display:-webkit-box; -webkit-line-clamp:2; -webkit-box-orient:vertical; overflow:hidden}
+    .cmp-head .more{font-size:12.5px; font-weight:600; color:var(--accent); cursor:pointer; margin-top:3px; display:inline-block}
+    .cmp-head .playrow{flex:none}
+
+    .vgrid{display:grid; grid-template-columns:repeat(3,1fr); gap:12px}
+    .vcell{text-align:center}
+    .vcell .vlabel{
+      font-weight:700; font-size:13.5px; margin-bottom:6px; color:var(--muted);
+      display:flex; align-items:center; justify-content:center; gap:6px;
+    }
+    .vcell.ours .vlabel{color:var(--ours)}
+    .vcell .vlabel .star{font-size:11px}
+    .vframe{position:relative; border-radius:10px; overflow:hidden; background:#0b0b0f; aspect-ratio:16/10}
+    .vcell.ours .vframe{box-shadow:0 0 0 2.5px var(--ours)}
+    .vframe video{position:absolute; inset:0; width:100%; height:100%; object-fit:cover; display:block; background:#0b0b0f}
+    .vframe .ph{
+      position:absolute; inset:0; display:grid; place-items:center; color:#555; font-size:12px;
+      background:repeating-linear-gradient(45deg,#101016,#101016 10px,#14141c 10px,#14141c 20px);
+    }
+
+    /* ---------- Tables ---------- */
+    .tabs{display:flex; gap:8px; justify-content:center; margin-bottom:22px; flex-wrap:wrap}
+    .tabbtn{
+      border:1px solid var(--line); background:#fff; border-radius:999px; padding:9px 18px;
+      font-weight:600; font-size:14px; cursor:pointer; color:var(--muted);
+    }
+    .tabbtn.active{background:var(--fg); color:#fff; border-color:var(--fg)}
+    .table-card{background:#fff; border:1px solid var(--line); border-radius:var(--radius); box-shadow:var(--shadow); overflow:hidden}
+    .table-card .thead{padding:16px 20px; border-bottom:1px solid var(--line)}
+    .table-card .thead h3{margin:0; font-size:17px; font-weight:700}
+    .table-card .thead p{margin:5px 0 0; color:var(--muted); font-size:13px}
+    .tscroll{overflow-x:auto}
+    table{border-collapse:collapse; width:100%; font-size:14.5px; min-width:560px}
+    th,td{padding:11px 14px; text-align:center; white-space:nowrap}
+    th{font-weight:700; color:var(--muted); font-size:12.5px; text-transform:uppercase; letter-spacing:.03em; border-bottom:1px solid var(--line)}
+    th:first-child,td:first-child{text-align:left}
+    tbody tr{border-bottom:1px solid #f0f2f7}
+    tbody tr:last-child{border-bottom:none}
+    td.method{font-weight:600; color:var(--fg)}
+    td.best{font-weight:800; color:var(--fg)}
+    tr.ours{background:var(--ours-soft)}
+    tr.ours td{color:var(--ours); font-weight:700}
+    tr.ours td.method{color:var(--ours)}
+    .tnote{padding:12px 20px; color:var(--muted); font-size:12.5px; border-top:1px solid var(--line); background:var(--bg-soft); text-align:left; white-space:normal}
+
+    .hide{display:none !important}
+
+    /* ---------- BibTeX ---------- */
+    .bibwrap{position:relative}
+    pre.bib{
+      background:#0f1117; color:#d7dce6; border-radius:var(--radius); padding:22px 22px; overflow:auto;
+      font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace; font-size:13.5px; line-height:1.6; margin:0;
+    }
+    .copybtn{
+      position:absolute; top:14px; right:14px; background:#23262f; color:#cdd3df; border:1px solid #353a45;
+      border-radius:8px; padding:7px 12px; font-size:12.5px; cursor:pointer; font-weight:600;
+    }
+    .copybtn:hover{background:#2d313c; color:#fff}
+
+    footer{border-top:1px solid var(--line); background:var(--bg-soft); padding:34px 0; color:var(--muted); font-size:13.5px; text-align:center}
+
+    .totop{
+      position:fixed; right:22px; bottom:22px; width:46px; height:46px; border-radius:50%;
+      background:var(--fg); color:#fff; border:none; cursor:pointer; display:none; place-items:center;
+      box-shadow:var(--shadow-lg); z-index:50; font-size:16px;
+    }
+    .totop.show{display:grid}
+
+    @media (max-width:920px){
+      .stats{grid-template-columns:repeat(2,1fr)}
+      .cards{grid-template-columns:1fr}
+      .method-points{grid-template-columns:1fr}
+      .vgrid{grid-template-columns:repeat(2,1fr)}
+    }
+    @media (max-width:560px){
+      section{padding:40px 0}
+      .vgrid{grid-template-columns:1fr}
+      .cmp-head{flex-wrap:wrap}
+    }
+  </style>
 </head>
 <body>
 
-
-  <!-- Scroll to Top Button -->
-  <button class="scroll-to-top" onclick="scrollToTop()" title="Scroll to top" aria-label="Scroll to top">
-    <i class="fas fa-chevron-up"></i>
-  </button>
-
-  <!-- More Works Dropdown -->
-  <div class="more-works-container">
-    <button class="more-works-btn" onclick="toggleMoreWorks()" title="View More Works from Our Lab">
-      <i class="fas fa-flask"></i>
-      More Works
-      <i class="fas fa-chevron-down dropdown-arrow"></i>
-    </button>
-    <div class="more-works-dropdown" id="moreWorksDropdown">
-      <div class="dropdown-header">
-        <h4>More Works from Our Lab</h4>
-        <button class="close-btn" onclick="toggleMoreWorks()">
-          <i class="fas fa-times"></i>
-        </button>
+  <!-- ===================== HERO ===================== -->
+  <header class="hero">
+    <div class="wrap">
+      <div style="text-align:center">
+        <span class="badge-venue"><i class="fas fa-cube" style="color:var(--accent)"></i> Interactive World Model &nbsp;·&nbsp; <b>2026</b></span>
       </div>
-      <div class="works-list">
-        <!-- TODO: Replace with your lab's related works -->
-        <a href="https://arxiv.org/abs/PAPER_ID_1" class="work-item" target="_blank">
-          <div class="work-info">
-            <!-- TODO: Replace with actual paper title -->
-            <h5>Paper Title 1</h5>
-            <!-- TODO: Replace with brief description -->
-            <p>Brief description of the work and its main contribution.</p>
-            <!-- TODO: Replace with venue and year -->
-            <span class="work-venue">Conference/Journal 2024</span>
-          </div>
-          <i class="fas fa-external-link-alt"></i>
-        </a>
-        <!-- TODO: Add more related works or remove extra items -->
-        <a href="https://arxiv.org/abs/PAPER_ID_2" class="work-item" target="_blank">
-          <div class="work-info">
-            <h5>Paper Title 2</h5>
-            <p>Brief description of the work and its main contribution.</p>
-            <span class="work-venue">Conference/Journal 2023</span>
-          </div>
-          <i class="fas fa-external-link-alt"></i>
-        </a>
-        <a href="https://arxiv.org/abs/PAPER_ID_3" class="work-item" target="_blank">
-          <div class="work-info">
-            <h5>Paper Title 3</h5>
-            <p>Brief description of the work and its main contribution.</p>
-            <span class="work-venue">Conference/Journal 2023</span>
-          </div>
-          <i class="fas fa-external-link-alt"></i>
-        </a>
+      <h1 class="title">ActWorld: From Explorable to <span class="accent">Interactive</span> World Model via Action-Aware Memory</h1>
+
+      <div class="authors">
+        <a href="#" target="_blank">Zhexiao Xiong</a><sup>1,2,*</sup>,
+        <a href="#" target="_blank">Yizhi Song</a><sup>2</sup>,
+        <a href="#" target="_blank">Hao Kang</a><sup>2</sup>,
+        <a href="#" target="_blank">Qing Yan</a><sup>2</sup>,
+        <a href="#" target="_blank">Liming Jiang</a><sup>2</sup>,
+        <a href="#" target="_blank">Jenson Yang</a><sup>2</sup>,
+        <a href="#" target="_blank">Zhoujie Fu</a><sup>2</sup>,
+        <a href="#" target="_blank">Stathi Fotiadis</a><sup>2</sup>,
+        <a href="#" target="_blank">Angtian Wang</a><sup>2</sup>,
+        <a href="#" target="_blank">Zichuan Liu</a><sup>2</sup>,
+        <a href="#" target="_blank">Bo Liu</a><sup>2</sup>,
+        <a href="#" target="_blank">Yiding Yang</a><sup>2</sup>,
+        <a href="#" target="_blank">Xin Lu</a><sup>2</sup>,
+        <a href="#" target="_blank">Nathan Jacobs</a><sup>1</sup>
+      </div>
+      <div class="affil">
+        <span class="org"><sup>1</sup>Washington University in St. Louis</span> &nbsp;&nbsp;
+        <span class="org"><sup>2</sup>Intelligent Creation, ByteDance</span>
+      </div>
+      <div class="note"><sup>*</sup>Work done during internship at ByteDance</div>
+
+      <div class="links">
+        <a class="btn primary" href="static/pdfs/actworld.pdf" target="_blank"><span class="ico"><i class="fas fa-file-pdf"></i></span> Paper</a>
+        <a class="btn" href="#" target="_blank"><span class="ico"><i class="ai ai-arxiv"></i></span> arXiv</a>
+        <a class="btn" href="#" target="_blank"><span class="ico"><i class="fab fa-github"></i></span> Code</a>
+        <a class="btn alt" href="#comparison"><span class="ico"><i class="fas fa-clapperboard"></i></span> Video Comparisons</a>
       </div>
     </div>
-  </div>
+  </header>
 
-  <main id="main-content">
-  <section class="hero">
-    <div class="hero-body">
-      <div class="container is-max-desktop">
-        <div class="columns is-centered">
-          <div class="column has-text-centered">
-            <!-- TODO: Replace with your paper title -->
-            <h1 class="title is-1 publication-title">Academic Project Page</h1>
-            <div class="is-size-5 publication-authors">
-              <!-- TODO: Replace with your paper authors and their personal links -->
-              <span class="author-block">
-                <a href="FIRST AUTHOR PERSONAL LINK" target="_blank">First Author</a><sup>*</sup>,</span>
-                <span class="author-block">
-                  <a href="SECOND AUTHOR PERSONAL LINK" target="_blank">Second Author</a><sup>*</sup>,</span>
-                  <span class="author-block">
-                    <a href="THIRD AUTHOR PERSONAL LINK" target="_blank">Third Author</a>
-                  </span>
-                  </div>
-
-                  <div class="is-size-5 publication-authors">
-                    <!-- TODO: Replace with your institution and conference/journal info -->
-                    <span class="author-block">Institution Name<br>Conference name and year</span>
-                    <!-- TODO: Remove this line if no equal contribution -->
-                    <span class="eql-cntrb"><small><br><sup>*</sup>Indicates Equal Contribution</small></span>
-                  </div>
-
-                  <div class="column has-text-centered">
-                    <div class="publication-links">
-                         <!-- TODO: Update with your arXiv paper ID -->
-                      <span class="link-block">
-                        <a href="https://arxiv.org/pdf/<ARXIV PAPER ID>.pdf" target="_blank"
-                        class="external-link button is-normal is-rounded is-dark">
-                        <span class="icon">
-                          <i class="fas fa-file-pdf"></i>
-                        </span>
-                        <span>Paper</span>
-                      </a>
-                    </span>
-
-                    <!-- TODO: Add your supplementary material PDF or remove this section -->
-                    <span class="link-block">
-                      <a href="static/pdfs/supplementary_material.pdf" target="_blank"
-                      class="external-link button is-normal is-rounded is-dark">
-                      <span class="icon">
-                        <i class="fas fa-file-pdf"></i>
-                      </span>
-                      <span>Supplementary</span>
-                    </a>
-                  </span>
-
-                  <!-- TODO: Replace with your GitHub repository URL -->
-                  <span class="link-block">
-                    <a href="https://github.com/YOUR REPO HERE" target="_blank"
-                    class="external-link button is-normal is-rounded is-dark">
-                    <span class="icon">
-                      <i class="fab fa-github"></i>
-                    </span>
-                    <span>Code</span>
-                  </a>
-                </span>
-
-                <!-- TODO: Update with your arXiv paper ID -->
-                <span class="link-block">
-                  <a href="https://arxiv.org/abs/<ARXIV PAPER ID>" target="_blank"
-                  class="external-link button is-normal is-rounded is-dark">
-                  <span class="icon">
-                    <i class="ai ai-arxiv"></i>
-                  </span>
-                  <span>arXiv</span>
-                </a>
-              </span>
-            </div>
-          </div>
-        </div>
-      </div>
+  <!-- ===================== TEASER ===================== -->
+  <section>
+    <div class="wrap">
+      <figure>
+        <div class="media"><img src="static/images/teaser1.png" alt="ActWorld teaser: multi-action rollouts with per-frame keyboard/mouse control"></div>
+        <figcaption>
+          <b>ActWorld</b> handles both long-horizon navigation and mid-rollout object interaction within a single rollout, under
+          per-frame keyboard &amp; mouse control (WASD + arrow keys overlaid on each frame; yellow marks the active key). Each row is one
+          continuous trajectory — time flows left→right and wraps to the next row; colored bands separate navigation segments from
+          object-interaction segments (<i>Insert → Pickup</i>, <i>Carry → Place → Wipe</i>), with the action label shown above.
+        </figcaption>
+      </figure>
     </div>
-  </div>
-</section>
+  </section>
 
-
-<!-- Teaser video-->
-<section class="hero teaser">
-  <div class="container is-max-desktop">
-    <div class="hero-body">
-      <!-- TODO: Replace with your teaser video -->
-      <video poster="" id="tree" autoplay controls muted loop height="100%" preload="metadata">
-        <!-- TODO: Add your video file path here -->
-        <source src="static/videos/banner_video.mp4" type="video/mp4">
-      </video>
-      <!-- TODO: Replace with your video description -->
-      <h2 class="subtitle has-text-centered">
-        Aliquam vitae elit ullamcorper tellus egestas pellentesque. Ut lacus tellus, maximus vel lectus at, placerat pretium mi. Maecenas dignissim tincidunt vestibulum. Sed consequat hendrerit nisl ut maximus. 
-      </h2>
+  <!-- ===================== ABSTRACT ===================== -->
+  <section class="alt-bg abstract">
+    <div class="wrap narrow">
+      <h2 class="section-title">Abstract</h2>
+      <div class="section-sub">From visually <i>explorable</i> worlds to genuinely <i>actionable</i> ones.</div>
+      <p>
+        Interactive world models aim to simulate environment dynamics under real-time user actions. However, their action
+        vocabulary is largely confined to <b>navigation</b>: most actions correspond to motion (walk, turn, look around), while
+        <span class="hl">interaction with objects in the scene</span> (pick up plates, open doors, trigger physical responses) is
+        either absent, restricted to game domains, or relegated to prompt-to-full-video scenarios. The resulting worlds are visually
+        explorable but not truly actionable. We present <b>ActWorld</b>, an interactive world model that extends prior
+        navigation-centric generators to support mid-rollout object interaction within a chunk-autoregressive framework. We argue the
+        navigation–interaction gap stems from two bottlenecks: a <b>data bottleneck</b> — the lack of human–object interaction data
+        with accurate, dense labels; and a <b>memory bottleneck</b> — recency-biased history compression discards the event-transition
+        frames that causally determine subsequent object states, leading to an <i>action-forgetting</i> pathology. On the data side, we
+        construct a <span class="hl">100K interaction video dataset</span>, each annotated with per-chunk captions via chain-of-thought
+        reasoning. On the model side, we introduce a <span class="hl">hierarchical action-aware memory</span> that routes history
+        compression by interaction importance, complemented by a persistent memory bank that maintains event-update and object-identity
+        tokens across long rollouts. Experiments show ActWorld supports both flexible navigation and rich object interaction within a
+        single model, substantially improving interaction fidelity over navigation-only baselines without sacrificing viewpoint control.
+      </p>
     </div>
-  </div>
-</section>
-<!-- End teaser video -->
+  </section>
 
-<!-- Paper abstract -->
-<section class="section hero is-light">
-  <div class="container is-max-desktop">
-    <div class="columns is-centered has-text-centered">
-      <div class="column is-four-fifths">
-        <h2 class="title is-3">Abstract</h2>
-        <div class="content has-text-justified">
-          <!-- TODO: Replace with your paper abstract -->
-          <p>
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin ullamcorper tellus sed ante aliquam tempus. Etiam porttitor urna feugiat nibh elementum, et tempor dolor mattis. Donec accumsan enim augue, a vulputate nisi sodales sit amet. Proin bibendum ex eget mauris cursus euismod nec et nibh. Maecenas ac gravida ante, nec cursus dui. Vivamus purus nibh, placerat ac purus eget, sagittis vestibulum metus. Sed vestibulum bibendum lectus gravida commodo. Pellentesque auctor leo vitae sagittis suscipit.
-          </p>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-<!-- End paper abstract -->
-
-
-<!-- Image carousel -->
-<section class="hero is-small">
-  <div class="hero-body">
-    <div class="container">
-      <div id="results-carousel" class="carousel results-carousel">
-       <div class="item">
-        <!-- TODO: Replace with your research result images -->
-        <img src="static/images/carousel1.jpg" alt="First research result visualization" loading="lazy"/>
-        <!-- TODO: Replace with description of this result -->
-        <h2 class="subtitle has-text-centered">
-          First image description.
-        </h2>
-      </div>
-      <div class="item">
-        <!-- Your image here -->
-        <img src="static/images/carousel2.jpg" alt="Second research result visualization" loading="lazy"/>
-        <h2 class="subtitle has-text-centered">
-          Second image description.
-        </h2>
-      </div>
-      <div class="item">
-        <!-- Your image here -->
-        <img src="static/images/carousel3.jpg" alt="Third research result visualization" loading="lazy"/>
-        <h2 class="subtitle has-text-centered">
-         Third image description.
-       </h2>
-     </div>
-     <div class="item">
-      <!-- Your image here -->
-      <img src="static/images/carousel4.jpg" alt="Fourth research result visualization" loading="lazy"/>
-      <h2 class="subtitle has-text-centered">
-        Fourth image description.
-      </h2>
-    </div>
-  </div>
-</div>
-</div>
-</section>
-<!-- End image carousel -->
-
-
-
-
-<!-- Youtube video -->
-<section class="hero is-small is-light">
-  <div class="hero-body">
-    <div class="container">
-      <!-- Paper video. -->
-      <h2 class="title is-3">Video Presentation</h2>
-      <div class="columns is-centered has-text-centered">
-        <div class="column is-four-fifths">
-          
-          <div class="publication-video">
-            <!-- TODO: Replace with your YouTube video ID -->
-            <iframe src="https://www.youtube.com/embed/JkaxUblCGz0" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-<!-- End youtube video -->
-
-
-<!-- Video carousel -->
-<section class="hero is-small">
-  <div class="hero-body">
-    <div class="container">
-      <h2 class="title is-3">Another Carousel</h2>
-      <div id="results-carousel" class="carousel results-carousel">
-        <div class="item item-video1">
-          <!-- TODO: Add poster image for better preview -->
-          <video poster="" id="video1" controls muted loop height="100%" preload="metadata">
-            <!-- Your video file here -->
-            <source src="static/videos/carousel1.mp4" type="video/mp4">
-          </video>
-        </div>
-        <div class="item item-video2">
-          <!-- TODO: Add poster image for better preview -->
-          <video poster="" id="video2" controls muted loop height="100%" preload="metadata">
-            <!-- Your video file here -->
-            <source src="static/videos/carousel2.mp4" type="video/mp4">
-          </video>
-        </div>
-        <div class="item item-video3">
-          <!-- TODO: Add poster image for better preview -->
-          <video poster="" id="video3" controls muted loop height="100%" preload="metadata">
-            <!-- Your video file here -->
-            <source src="static/videos/carousel3.mp4" type="video/mp4">
-          </video>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-<!-- End video carousel -->
-
-
-
-
-
-
-<!-- Paper poster -->
-<section class="hero is-small is-light">
-  <div class="hero-body">
-    <div class="container">
-      <h2 class="title">Poster</h2>
-
-      <!-- TODO: Replace with your poster PDF -->
-      <iframe  src="static/pdfs/sample.pdf" width="100%" height="550">
-          </iframe>
-        
+  <!-- ===================== STATS ===================== -->
+  <section>
+    <div class="wrap">
+      <div class="stats">
+        <div class="stat"><div class="num">57.8%</div><div class="lab">Action success rate (VLM-AJ) — more than 2× every baseline</div></div>
+        <div class="stat"><div class="num">100K</div><div class="lab">Interaction-dense training videos · 40 action categories</div></div>
+        <div class="stat"><div class="num">3-step</div><div class="lab">Distilled generator for real-time interactive rollout</div></div>
+        <div class="stat"><div class="num">I-Bench</div><div class="lab">Long-horizon action + navigation benchmark · 300 prompts</div></div>
       </div>
     </div>
   </section>
-<!--End paper poster -->
 
-
-
-<!--BibTex citation -->
-  <section class="section" id="BibTeX">
-    <div class="container is-max-desktop content">
-      <div class="bibtex-header">
-        <h2 class="title">BibTeX</h2>
-        <button class="copy-bibtex-btn" onclick="copyBibTeX()" title="Copy BibTeX to clipboard">
-          <i class="fas fa-copy"></i>
-          <span class="copy-text">Copy</span>
-        </button>
-      </div>
-      <pre id="bibtex-code"><code>@article{YourPaperKey2024,
-  title={Your Paper Title Here},
-  author={First Author and Second Author and Third Author},
-  journal={Conference/Journal Name},
-  year={2024},
-  url={https://your-domain.com/your-project-page}
-}</code></pre>
-    </div>
-</section>
-<!--End BibTex citation -->
-
-
-  <footer class="footer">
-  <div class="container">
-    <div class="columns is-centered">
-      <div class="column is-8">
-        <div class="content">
-
-          <p>
-            This page was built using the <a href="https://github.com/eliahuhorwitz/Academic-project-page-template" target="_blank">Academic Project Page Template</a> which was adopted from the <a href="https://nerfies.github.io" target="_blank">Nerfies</a> project page.
-            You are free to borrow the source code of this website, we just ask that you link back to this page in the footer. <br> This website is licensed under a <a rel="license"  href="http://creativecommons.org/licenses/by-sa/4.0/" target="_blank">Creative
-            Commons Attribution-ShareAlike 4.0 International License</a>.
-          </p>
-
+  <!-- ===================== CONTRIBUTIONS ===================== -->
+  <section class="alt-bg">
+    <div class="wrap">
+      <div class="eyebrow">Contributions</div>
+      <h2 class="section-title">What makes ActWorld interactive</h2>
+      <div class="section-sub">Closing the navigation–interaction gap from both the data side and the model side.</div>
+      <div class="cards">
+        <div class="card">
+          <div class="ic"><i class="fas fa-layer-group"></i></div>
+          <h3>Hierarchical Action-Aware Memory</h3>
+          <p>A local memory bank routes and amplifies interaction-critical frames inside the sliding window; a persistent bank keeps
+          compact <b>event-update</b> and <b>object-identity</b> tokens that survive beyond the window's eviction horizon — curing the
+          action-forgetting pathology of recency-based memory.</p>
+        </div>
+        <div class="card">
+          <div class="ic"><i class="fas fa-database"></i></div>
+          <h3>Interaction-Dense Dataset &amp; Annotation</h3>
+          <p>A high-quality <b>100K-video</b> corpus spanning <b>40 action categories</b>, with every chunk annotated by a
+          chain-of-thought VLM with a dense caption and an interaction-phase label — supervision that existing navigation-centric
+          datasets lack.</p>
+        </div>
+        <div class="card">
+          <div class="ic"><i class="fas fa-gamepad"></i></div>
+          <h3>Unified Real-Time World Model</h3>
+          <p>A single model that jointly supports <b>flexible navigation</b> and <b>rich object interaction</b>, combining action-aware
+          memory with a dual-branch camera-conditioning module — validated on <b>I-Bench</b>, a new long-horizon benchmark that
+          interleaves navigation and interaction.</p>
         </div>
       </div>
     </div>
-  </div>
-</footer>
+  </section>
 
-<!-- Statcounter tracking code -->
-  
-<!-- You can add a tracker to track page visits by creating an account at statcounter.com -->
+  <!-- ===================== METHOD ===================== -->
+  <section>
+    <div class="wrap">
+      <div class="eyebrow">Method</div>
+      <h2 class="section-title">The ActWorld pipeline</h2>
+      <div class="section-sub">An autoregressive DiT generates each chunk under high-level object-interaction commands and low-level
+      keyboard/mouse controls.</div>
+      <figure>
+        <div class="media"><img src="static/images/pipeline.png" alt="ActWorld pipeline: hierarchical action-aware memory and dual-branch camera conditioning"></div>
+        <figcaption>
+          <b>Left:</b> past observations flow through a hierarchical action-aware memory with two channels — a persistent action-aware
+          bank of event/object tokens that survives long navigation gaps, and a local bank of EAFR-routed coarse/mid/fine history tokens.
+          <b>Right:</b> inside each DiT block, self-attention amplifies history keys via ACHA, Plücker rays drive a per-token scale-and-shift,
+          and cross-attention ingests the per-chunk caption combined with a symbolic text-camera embedding.
+        </figcaption>
+      </figure>
 
-    <!-- End of Statcounter Code -->
+      <div class="method-points">
+        <div class="mp"><div class="dot">1</div><div>
+          <h4>Chain-of-Thought per-chunk annotation</h4>
+          <p>Each 33-frame chunk gets a dedicated description and structured interaction/phase labels; CoT prompting forces the VLM to
+          reason over explicit visual evidence before committing, removing hallucinated interactions.</p></div></div>
+        <div class="mp"><div class="dot">2</div><div>
+          <h4>Dual-branch keyboard/mouse conditioning</h4>
+          <p>A geometric branch routes per-pixel Plücker rays through a shared FiLM module; a symbolic branch maps the 81-entry
+          (keyboard, mouse) vocabulary to a text embedding — keeping fine viewpoint control.</p></div></div>
+        <div class="mp"><div class="dot">3</div><div>
+          <h4>EAFR + ACHA memory routing</h4>
+          <p>Event-Aware Frame Re-assignment replaces recency bucketing with importance-ranked routing, so causally-critical
+          <i>contact</i> / <i>manipulating</i> frames survive compression; Action-Conditioned History Amplification sharpens attention
+          onto the keys that matter for the current action.</p></div></div>
+        <div class="mp"><div class="dot">4</div><div>
+          <h4>Persistent memory bank + few-step distillation</h4>
+          <p>A FIFO bank of event &amp; object-identity tokens (pinned at interaction phases) carries object identity across long
+          navigation gaps; a Helios-style distillation reduces the 50-step teacher to a 3-step generator for real-time use.</p></div></div>
+      </div>
+    </div>
+  </section>
 
-  </body>
-  </html>
+  <!-- ===================== INTERACTIVE COMPARISON ===================== -->
+  <section id="comparison" class="alt-bg">
+    <div class="wrap">
+      <div class="eyebrow">Qualitative Comparison</div>
+      <h2 class="section-title">Interactive side-by-side comparison</h2>
+      <div class="section-sub">
+        Each row is a benchmark sample from <b>I-Bench</b>. Six methods are rendered from the <b>same first frame and the same
+        ground-truth keyboard/mouse trajectory</b>; overlays at the bottom-left of every clip show the GT keys (WASD), mouse (arrows),
+        and active verb buttons. <span style="color:var(--ours);font-weight:700">ActWorld (Ours)</span> is highlighted.
+      </div>
+
+      <div class="cmp-controls">
+        <div class="grp">
+          <button class="pill solid" id="playAll"><i class="fas fa-play"></i> Play all</button>
+          <button class="pill" id="pauseAll"><i class="fas fa-pause"></i> Pause all</button>
+        </div>
+        <div class="grp" style="margin-left:6px">
+          <button class="pill filter active" data-f="all">All</button>
+          <button class="pill filter" data-f="First-person">First-person</button>
+          <button class="pill filter" data-f="Third-person">Third-person</button>
+        </div>
+        <div class="spacer"></div>
+        <span class="hint"><i class="fas fa-circle-info"></i> Each row has its own <b>▶ Play row</b> to compare locally.</span>
+      </div>
+
+      <div id="comparisons"></div>
+    </div>
+  </section>
+
+  <!-- ===================== RESULTS TABLES ===================== -->
+  <section>
+    <div class="wrap">
+      <div class="eyebrow">Quantitative Results</div>
+      <h2 class="section-title">Best or near-best on every axis</h2>
+      <div class="section-sub">Evaluated on the I-Bench testset along three complementary axes — perceptual/consistency quality
+        (VBench), semantic instruction following (VLM-Action-Judge), and geometric controllability (Key-Mouse-Following). Higher is
+        better; <b>bold</b> marks the column best.</div>
+
+      <div class="tabs">
+        <button class="tabbtn active" data-t="t-vlm">VLM-Action-Judge</button>
+        <button class="tabbtn" data-t="t-kmf">Key-Mouse-Following</button>
+        <button class="tabbtn" data-t="t-vbench">VBench</button>
+      </div>
+
+      <!-- VLM-AJ -->
+      <div class="table-card" id="t-vlm">
+        <div class="thead">
+          <h3>VLM-Action-Judge — semantic instruction following</h3>
+          <p>Does the commanded action actually happen? A judge VLM rates each chunk on a 0–3 scale.</p>
+        </div>
+        <div class="tscroll">
+          <table>
+            <thead><tr><th>Method</th><th>IF ↑</th><th>Succ. ↑</th><th>≥2 ↑</th></tr></thead>
+            <tbody>
+              <tr><td class="method">Yume 1.5</td><td>1.638</td><td>20.12</td><td>46.75</td></tr>
+              <tr><td class="method">HY-World 1.5</td><td>0.709</td><td>5.19</td><td>18.70</td></tr>
+              <tr><td class="method">Lingbot-World</td><td>1.635</td><td>19.89</td><td>49.91</td></tr>
+              <tr><td class="method">Matrix-Game 3</td><td>0.295</td><td>1.88</td><td>8.27</td></tr>
+              <tr><td class="method">Astra</td><td>0.949</td><td>5.83</td><td>19.36</td></tr>
+              <tr><td class="method">Infinite-World</td><td>0.237</td><td>1.51</td><td>3.95</td></tr>
+              <tr class="ours"><td class="method">ActWorld (Ours)</td><td class="best">2.557</td><td class="best">57.8</td><td class="best">84.5</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <div class="tnote">IF: mean instruction-following score (0–3). Succ.: success rate (Level 3). ≥2: partial-or-better rate (Level ≥ 2).
+          ActWorld's Level-3 success rate more than doubles every baseline.</div>
+      </div>
+
+      <!-- KMF -->
+      <div class="table-card hide" id="t-kmf">
+        <div class="thead">
+          <h3>Key-Mouse-Following — geometric controllability</h3>
+          <p>Generate a clip from a GT (keys, mouse) sequence, recover its trajectory, and check each chunk moves as commanded.</p>
+        </div>
+        <div class="tscroll">
+          <table>
+            <thead><tr><th>Method</th><th>Acc<sub>full</sub> ↑</th><th>Acc<sub>keys</sub> ↑</th><th>Acc<sub>mouse</sub> ↑</th></tr></thead>
+            <tbody>
+              <tr><td class="method">Yume 1.5</td><td>4.82</td><td>31.79</td><td>15.71</td></tr>
+              <tr><td class="method">HY-World 1.5</td><td>9.17</td><td>42.78</td><td>25.56</td></tr>
+              <tr><td class="method">Lingbot-World</td><td>2.67</td><td>28.00</td><td>13.33</td></tr>
+              <tr><td class="method">Matrix-Game 3</td><td>20.00</td><td class="best">45.01</td><td>40.83</td></tr>
+              <tr><td class="method">Astra</td><td>11.43</td><td>28.57</td><td>28.57</td></tr>
+              <tr><td class="method">Infinite-World</td><td>3.00</td><td>24.50</td><td>15.00</td></tr>
+              <tr class="ours"><td class="method">ActWorld (Ours)</td><td class="best">20.62</td><td>41.02</td><td class="best">43.67</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <div class="tnote">Acc<sub>full</sub>: joint (keys, mouse) match. Acc<sub>keys</sub> / Acc<sub>mouse</sub>: per-axis accuracy, from VIPE-recovered SE(3) trajectories.</div>
+      </div>
+
+      <!-- VBench -->
+      <div class="table-card hide" id="t-vbench">
+        <div class="thead">
+          <h3>VBench — perceptual &amp; consistency metrics</h3>
+          <p>Standard VBench-1.0 / VBench-i2v dimensions used by recent video world-model papers.</p>
+        </div>
+        <div class="tscroll">
+          <table>
+            <thead><tr><th>Method</th><th>SC</th><th>BC</th><th>MS</th><th>AQ</th><th>IQ</th><th>DD</th><th>TF</th><th>OC</th><th>i2v-S</th><th>i2v-B</th></tr></thead>
+            <tbody>
+              <tr><td class="method">Yume 1.5</td><td>0.743</td><td>0.872</td><td>0.985</td><td>0.432</td><td>0.645</td><td class="best">1.000</td><td>0.962</td><td>0.180</td><td>0.930</td><td>0.943</td></tr>
+              <tr><td class="method">HY-World 1.5</td><td>0.856</td><td>0.873</td><td class="best">0.993</td><td>0.449</td><td>0.734</td><td>0.933</td><td class="best">0.977</td><td>0.199</td><td>0.952</td><td>0.953</td></tr>
+              <tr><td class="method">Lingbot-World</td><td>0.724</td><td>0.866</td><td>0.979</td><td>0.436</td><td>0.693</td><td>0.983</td><td>0.966</td><td>0.182</td><td>0.917</td><td>0.935</td></tr>
+              <tr><td class="method">Matrix-Game 3</td><td>0.662</td><td>0.854</td><td>0.981</td><td>0.377</td><td>0.681</td><td class="best">1.000</td><td>0.954</td><td>0.169</td><td>0.862</td><td>0.889</td></tr>
+              <tr><td class="method">Astra</td><td>0.603</td><td>0.841</td><td>0.946</td><td>0.290</td><td>0.465</td><td>0.817</td><td>0.946</td><td>0.152</td><td>0.759</td><td>0.827</td></tr>
+              <tr><td class="method">Infinite-World</td><td>0.801</td><td>0.863</td><td>0.987</td><td>0.442</td><td class="best">0.748</td><td>0.967</td><td>0.959</td><td>0.087</td><td>0.716</td><td>0.743</td></tr>
+              <tr class="ours"><td class="method">ActWorld (Ours)</td><td class="best">0.871</td><td class="best">0.896</td><td>0.991</td><td class="best">0.485</td><td>0.731</td><td class="best">1.000</td><td>0.973</td><td class="best">0.201</td><td class="best">0.954</td><td class="best">0.957</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <div class="tnote">SC: subject-consistency · BC: background-consistency · MS: motion-smoothness · AQ: aesthetic-quality · IQ: imaging-quality ·
+          DD: dynamic-degree · TF: temporal-flickering · OC: overall-consistency · i2v-S / i2v-B: VBench-i2v subject / background.</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================== QUALITATIVE FIGURE ===================== -->
+  <section class="alt-bg">
+    <div class="wrap">
+      <h2 class="section-title">Rollouts across diverse scenes</h2>
+      <div class="section-sub">Continuous trajectories that require both free-form navigation and object-centric interaction within
+        a single rollout — preserving viewpoint controllability while producing coherent interaction outcomes.</div>
+      <figure>
+        <div class="media"><img src="static/images/vis1.png" alt="ActWorld qualitative rollouts: Open/Close and Open/Pickup/Place sequences"></div>
+        <figcaption>Each row shows temporally ordered frames with per-frame keyboard/mouse controls overlaid (active inputs highlighted in
+          yellow). ActWorld preserves the manipulated objects and the commanded action ordering across the full clip.</figcaption>
+      </figure>
+    </div>
+  </section>
+
+  <!-- ===================== BIBTEX ===================== -->
+  <section>
+    <div class="wrap narrow">
+      <h2 class="section-title">BibTeX</h2>
+      <div class="section-sub">If you find ActWorld useful, please cite our work.</div>
+      <div class="bibwrap">
+        <button class="copybtn" onclick="copyBib()"><i class="fas fa-copy"></i> Copy</button>
+        <pre class="bib" id="bib">@article{xiong2026actworld,
+  title   = {ActWorld: From Explorable to Interactive World Model via Action-Aware Memory},
+  author  = {Xiong, Zhexiao and Song, Yizhi and Kang, Hao and Yan, Qing and Jiang, Liming
+             and Yang, Jenson and Fu, Zhoujie and Fotiadis, Stathi and Wang, Angtian
+             and Liu, Zichuan and Liu, Bo and Yang, Yiding and Lu, Xin and Jacobs, Nathan},
+  journal = {arXiv preprint},
+  year    = {2026}
+}</pre>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <div class="wrap">
+      <p>Washington University in St. Louis &nbsp;·&nbsp; Intelligent Creation, ByteDance</p>
+      <p style="margin-top:8px">Project page template adapted from the
+        <a href="https://github.com/eliahuhorwitz/Academic-project-page-template" target="_blank">Academic Project Page Template</a>.
+        Licensed under <a href="http://creativecommons.org/licenses/by-sa/4.0/" target="_blank">CC BY-SA 4.0</a>.</p>
+    </div>
+  </footer>
+
+  <button class="totop" id="totop" title="Back to top"><i class="fas fa-chevron-up"></i></button>
+
+  <script src="static/js/comparisons.js"></script>
+  <script>
+    /* ---------- Build interactive comparison viewer ---------- */
+    (function(){
+      const DATA = window.COMPARISONS;
+      if(!DATA){ return; }
+      const root = document.getElementById('comparisons');
+      const base = 'static/videos/comparisons';
+
+      function cell(vid, real){
+        const isOurs = real === 'ours';
+        const pretty = DATA.pretty[real] || real;
+        return `
+          <div class="vcell ${isOurs?'ours':''}">
+            <div class="vlabel">${isOurs?'<i class="fas fa-star star"></i>':''}${pretty}</div>
+            <div class="vframe">
+              <video data-vid="${vid}" data-real="${real}" muted loop playsinline preload="none"
+                     controls poster=""></video>
+            </div>
+          </div>`;
+      }
+
+      DATA.rows.forEach((row, i) => {
+        const div = document.createElement('div');
+        div.className = 'cmp-row';
+        div.dataset.view = row.tag.split(' ')[0]; // "First-person" / "Third-person"
+        const cells = row.models.map(m => cell(row.vid, m)).join('');
+        div.innerHTML = `
+          <div class="cmp-head">
+            <div class="idx">${i+1}/${DATA.rows.length}</div>
+            <div class="meta">
+              <span class="chip">${row.tag}</span>
+              <h3>${row.verbs || row.vid}</h3>
+              <p class="cap clamp">${row.caption || '<i>(no caption)</i>'}</p>
+              ${row.caption && row.caption.length > 140 ? '<span class="more">Show more</span>' : ''}
+            </div>
+            <button class="pill solid playrow"><i class="fas fa-play"></i> Play row</button>
+          </div>
+          <div class="vgrid">${cells}</div>`;
+        root.appendChild(div);
+
+        // play row
+        div.querySelector('.playrow').addEventListener('click', () => {
+          div.querySelectorAll('video').forEach(v => {
+            if(!v.src) v.src = `${base}/${v.dataset.vid}/${v.dataset.real}.mp4`;
+            try{ v.currentTime = 0; v.play(); }catch(e){}
+          });
+        });
+        // show more / less
+        const more = div.querySelector('.more');
+        if(more){
+          const cap = div.querySelector('.cap');
+          more.addEventListener('click', () => {
+            const clamped = cap.classList.toggle('clamp');
+            more.textContent = clamped ? 'Show more' : 'Show less';
+          });
+        }
+      });
+
+      // lazy load via IntersectionObserver
+      const io = new IntersectionObserver(entries => {
+        entries.forEach(en => {
+          if(!en.isIntersecting) return;
+          const v = en.target;
+          if(!v.src) v.src = `${base}/${v.dataset.vid}/${v.dataset.real}.mp4`;
+          io.unobserve(v);
+        });
+      }, { rootMargin:'400px 0px' });
+      document.querySelectorAll('#comparisons video').forEach(v => io.observe(v));
+
+      // global controls
+      document.getElementById('playAll').addEventListener('click', () => {
+        document.querySelectorAll('#comparisons .cmp-row:not(.hide) video').forEach(v => {
+          if(!v.src) v.src = `${base}/${v.dataset.vid}/${v.dataset.real}.mp4`;
+          try{ v.currentTime = 0; v.play(); }catch(e){}
+        });
+      });
+      document.getElementById('pauseAll').addEventListener('click', () => {
+        document.querySelectorAll('#comparisons video').forEach(v => { try{ v.pause(); }catch(e){} });
+      });
+
+      // filters
+      document.querySelectorAll('.cmp-controls .filter').forEach(btn => {
+        btn.addEventListener('click', () => {
+          document.querySelectorAll('.cmp-controls .filter').forEach(b => b.classList.remove('active'));
+          btn.classList.add('active');
+          const f = btn.dataset.f;
+          document.querySelectorAll('#comparisons .cmp-row').forEach(r => {
+            const show = (f === 'all') || (r.dataset.view === f);
+            r.classList.toggle('hide', !show);
+          });
+        });
+      });
+    })();
+
+    /* ---------- Results table tabs ---------- */
+    document.querySelectorAll('.tabbtn').forEach(btn => {
+      btn.addEventListener('click', () => {
+        document.querySelectorAll('.tabbtn').forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
+        ['t-vlm','t-kmf','t-vbench'].forEach(id => document.getElementById(id).classList.add('hide'));
+        document.getElementById(btn.dataset.t).classList.remove('hide');
+      });
+    });
+
+    /* ---------- BibTeX copy ---------- */
+    function copyBib(){
+      const t = document.getElementById('bib').innerText;
+      navigator.clipboard.writeText(t).then(() => {
+        const b = document.querySelector('.copybtn');
+        const old = b.innerHTML;
+        b.innerHTML = '<i class="fas fa-check"></i> Copied!';
+        setTimeout(() => b.innerHTML = old, 1600);
+      });
+    }
+
+    /* ---------- Back to top ---------- */
+    const totop = document.getElementById('totop');
+    window.addEventListener('scroll', () => {
+      totop.classList.toggle('show', window.scrollY > 600);
+    });
+    totop.addEventListener('click', () => window.scrollTo({top:0, behavior:'smooth'}));
+  </script>
+</body>
+</html>
